@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7fe; /* Light background for the whole page */
+        }
+        /* Custom styles for the donut chart placeholder */
+        .donut-chart-placeholder {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #4f46e5 0% 30%,    /* Sport Car */
+                #3b82f6 30% 55%,    /* SUV */
+                #22c55e 55% 80%,    /* Coupe */
+                #ef4444 80% 90%,    /* Hatchback */
+                #f97316 90% 100%    /* MPV */
+            );
+        }
+        .donut-chart-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="flex flex-col lg:flex-row min-h-screen">
+
+    <!-- Mobile Header (visible on small screens) -->
+    <header class="lg:hidden flex justify-between items-center p-4 bg-white shadow-md">
+        <h1 class="text-2xl font-bold text-blue-700">RENT.</h1>
+        <button id="mobileMenuButton" class="text-gray-600 focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white p-6 shadow-lg lg:rounded-r-3xl flex-col justify-between hidden lg:flex">
+        <div>
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-blue-700">RENT.</h1>
+            </div>
+            <nav>
+                <h2 class="text-xs font-semibold text-gray-400 uppercase mb-4">Main Menu</h2>
+                <ul>
+                    <li class="mb-1">
+                        <a href="#" class="flex items-center p-3 rounded-xl bg-blue-300 text-white shadow-md">
+                            <i class="fas fa-th-large mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-car mr-3"></i>
+                            <span>Car Rent</span>
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            <span>Insight</span>
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-600 hover:bg-blue-100">
+                            <i class="fas fa-wallet mr-3"></i>
+                            <span>Reimburse</span>
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-inbox mr-3"></i>
+                            <span>Inbox</span>
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <h2 class="text-xs font-semibold text-gray-400 uppercase mt-8 mb-4">Preferences</h2>
+                <ul>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>Help & Center</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <div class="flex items-center justify-between p-3 rounded-xl text-gray-600 hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <i class="fas fa-moon mr-3"></i>
+                                <span>Dark Mode</span>
+                            </div>
+                            <!-- Toggle Switch -->
+                            <label for="darkModeToggle" class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="darkModeToggle" class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="mt-8">
+            <a href="#" class="flex items-center p-3 rounded-xl text-red-500 hover:bg-red-50 hover:text-red-600">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                <span>Log Out</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-4 sm:p-8 overflow-y-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Details Rental Section -->
+            <section class="lg:col-span-2 bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Details Rental</h2>
+                <div class="relative w-full h-48 bg-blue-100 rounded-xl overflow-hidden mb-6">
+                    <!-- Placeholder for Map Image -->
+                    <img src="https://placehold.co/800x300/e0f2fe/2196f3?text=Map+Placeholder" alt="Map" class="w-full h-full object-cover">
+                    <!-- A simple marker on the map -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-blue-600 rounded-full w-8 h-8 text-white text-sm font-bold">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <!-- Path on the map -->
+                    <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 800 300" preserveAspectRatio="none">
+                        <path d="M150,150 C250,50 550,250 650,150" stroke="#4f46e5" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <!-- Car Details -->
+                <div class="flex flex-col sm:flex-row items-center justify-between bg-gray-50 p-4 rounded-xl mb-6">
+                    <div class="flex items-center mb-4 sm:mb-0">
+                        <img src="images/Car (1).png" alt="Nissan GT-R" class="w-24 h-14 object-contain rounded-lg mr-4">
+                        <div>
+                            <p class="text-gray-800 font-semibold text-lg">Nissan GT - R</p>
+                            <p class="text-gray-500 text-sm">Sport Car</p>
+                        </div>
+                    </div>
+                    <span class="text-gray-400 text-sm">#9761</span>
+                </div>
+
+                <!-- Pick-Up & Drop-Off -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Pick-Up -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-200">
+                        <p class="font-semibold text-gray-800 mb-3">Pick - Up</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label for="pickupLocation" class="block text-xs text-gray-500 mb-1">Locations</label>
+                                <div class="relative">
+                                    <select id="pickupLocation" class="block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white pr-8 text-sm">
+                                        <option>Kota Semarang</option>
+                                        <option>Jakarta</option>
+                                        <option>Bandung</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="pickupDate" class="block text-xs text-gray-500 mb-1">Date</label>
+                                <div class="relative">
+                                    <input type="date" id="pickupDate" value="2022-07-20" class="block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="pickupTime" class="block text-xs text-gray-500 mb-1">Time</label>
+                                <div class="relative">
+                                    <input type="time" id="pickupTime" value="07:00" class="block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Drop-Off -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-200">
+                        <p class="font-semibold text-gray-800 mb-3">Drop - Off</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label for="dropoffLocation" class="block text-xs text-gray-500 mb-1">Locations</label>
+                                <div class="relative">
+                                    <select id="dropoffLocation" class="block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white pr-8 text-sm">
+                                        <option>Kota Semarang</option>
+                                        <option>Jakarta</option>
+                                        <option>Bandung</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="dropoffDate" class="block text-xs text-gray-500 mb-1">Date</label>
+                                <div class="relative">
+                                    <input type="date" id="dropoffDate" value="2022-07-21" class="block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="dropoffTime" class="block text-xs text-gray-500 mb-1">Time</label>
+                                <div class="relative">
+                                    <input type="time" id="dropoffTime" value="01:00" class="block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Rental Price -->
+                <div class="flex flex-col sm:flex-row items-end justify-between mt-8 pt-4 border-t border-gray-200">
+                    <div class="mb-4 sm:mb-0">
+                        <p class="text-lg font-semibold text-gray-800">Total Rental Price</p>
+                        <p class="text-gray-500 text-sm">Overall price and includes rental discount</p>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">$80.00</p>
+                </div>
+            </section>
+
+            <!-- Right Column: Top 5 Car Rental & Recent Transaction -->
+            <div class="lg:col-span-1 flex flex-col gap-6">
+
+                <!-- Top 5 Car Rental Section -->
+                <section class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800">Top 5 Car Rental</h2>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-4">
+                        <div class="donut-chart-placeholder mb-6">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                                <p class="text-3xl font-bold text-gray-800">72,030</p>
+                                <p class="text-gray-500 text-sm">Rental Car</p>
+                            </div>
+                        </div>
+                        <div class="w-full">
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-blue-700 mr-2"></span>
+                                        <span class="text-gray-700 text-sm">Sport Car</span>
+                                    </div>
+                                    <span class="text-gray-700 font-medium text-sm">17,439</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>
+                                        <span class="text-gray-700 text-sm">SUV</span>
+                                    </div>
+                                    <span class="text-700 font-medium text-sm">9,478</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                                        <span class="text-gray-700 text-sm">Coupe</span>
+                                    </div>
+                                    <span class="text-gray-700 font-medium text-sm">18,197</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-red-500 mr-2"></span>
+                                        <span class="text-gray-700 text-sm">Hatchback</span>
+                                    </div>
+                                    <span class="text-gray-700 font-medium text-sm">12,510</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-orange-500 mr-2"></span>
+                                        <span class="text-gray-700 text-sm">MPV</span>
+                                    </div>
+                                    <span class="text-gray-700 font-medium text-sm">14,406</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Transaction Section -->
+                <section class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800">Recent Transaction</h2>
+                        <a href="#" class="text-blue-600 text-sm font-medium hover:underline">View All</a>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Transaction Item 1 -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x40/e0e0e0/333?text=Car" alt="Nissan GT-R" class="w-16 h-10 object-cover rounded-lg mr-3">
+                                <div>
+                                    <p class="text-gray-800 font-semibold text-sm">Nissan GT - R</p>
+                                    <p class="text-gray-500 text-xs">Sport Car</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-800 font-semibold text-sm">$80.00</p>
+                                <p class="text-gray-500 text-xs">20 July</p>
+                            </div>
+                        </div>
+                        <!-- Transaction Item 2 -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x40/d0d0d0/333?text=Car" alt="Koenigsegg" class="w-16 h-10 object-cover rounded-lg mr-3">
+                                <div>
+                                    <p class="text-gray-800 font-semibold text-sm">Koenigsegg</p>
+                                    <p class="text-gray-500 text-xs">Sport Car</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-800 font-semibold text-sm">$99.00</p>
+                                <p class="text-gray-500 text-xs">19 July</p>
+                            </div>
+                        </div>
+                        <!-- Transaction Item 3 -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x40/c0c0c0/333?text=Car" alt="Rolls-Royce" class="w-16 h-10 object-cover rounded-lg mr-3">
+                                <div>
+                                    <p class="text-gray-800 font-semibold text-sm">Rolls - Royce</p>
+                                    <p class="text-gray-500 text-xs">Sport Car</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-800 font-semibold text-sm">$96.00</p>
+                                <p class="text-gray-500 text-xs">18 July</p>
+                            </div>
+                        </div>
+                        <!-- Transaction Item 4 -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x40/b0b0b0/333?text=Car" alt="CR-V" class="w-16 h-10 object-cover rounded-lg mr-3">
+                                <div>
+                                    <p class="text-gray-800 font-semibold text-sm">CR - V</p>
+                                    <p class="text-gray-500 text-xs">SUV</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-800 font-semibold text-sm">$80.00</p>
+                                <p class="text-gray-500 text-xs">17 July</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple JavaScript for toggling the sidebar on mobile
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const sidebar = document.getElementById('sidebar');
+
+        if (mobileMenuButton && sidebar) {
+            mobileMenuButton.addEventListener('click', () => {
+                sidebar.classList.toggle('hidden');
+                sidebar.classList.toggle('flex');
+                sidebar.classList.toggle('absolute'); // Add absolute positioning
+                sidebar.classList.toggle('top-0');
+                sidebar.classList.toggle('left-0');
+                sidebar.classList.toggle('h-full'); // Make it full height
+                sidebar.classList.toggle('z-50'); // Ensure it's on top
+            });
+        }
+    </script>
+
+</body>
+</html>

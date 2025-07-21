@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morent Category</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+     <header class="flex justify-between items-center px-6 py-4 shadow-sm bg-white">
+    
+    
+    <div class="text-2xl font-bold text-blue-600">MORENT</div>
+
+    <!-- Search Bar -->
+    <div class="flex items-center bg-gray-100 px-4 py-2 rounded-full w-full max-w-md mx-6">
+      <i class="fas fa-search text-gray-400 mr-2"></i>
+      <input
+        type="text"
+        placeholder="Search something here"
+        class="flex-grow bg-transparent focus:outline-none text-sm text-gray-700"
+      />
+      <i class="fas fa-sliders-h text-gray-400 ml-2"></i>
+    </div>
+
+    <!-- Icons -->
+    <div class="flex items-center space-x-4">
+      <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <i class="fas fa-heart text-gray-600"></i>
+      </div>
+
+      <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer relative">
+        <i class="fas fa-bell text-gray-600"></i>
+        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+      </div>
+
+      <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <i class="fas fa-gear text-gray-600"></i>
+      </div>
+      <img
+        src="images/Image.png"
+        alt="User"
+        class="w-10 h-10 rounded-full object-cover"
+      />
+    </div>
+  </header>
+
+  <section class="font-inter bg-gray-50 text-gray-800 p-4">
+    <div class="flex flex-col lg:flex-row min-h-screen">
+        <!-- Sidebar Filters -->
+        <aside class="w-full lg:w-64 bg-white p-6 lg:p-8 shadow-md lg:shadow-none flex-shrink-0">
+            <!-- Type Filter -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-gray-400 uppercase mb-4">Type</h3>
+                <div class="space-y-3" id="car-type-filters">
+                    <label class="flex items-center text-gray-700">
+        <input type="checkbox" value="Sport" class="car-type-checkbox form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500" checked>
+        <span class="ml-2 car-count-span" data-car-type="Sport">Sport (0)</span>
+    </label>
+    <label class="flex items-center text-gray-700">
+        <input type="checkbox" value="SUV" class="car-type-checkbox form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500">
+        <span class="ml-2 car-count-span" data-car-type="SUV">SUV (0)</span>
+    </label>
+    <label class="flex items-center text-gray-700">
+        <input type="checkbox" value="MPV" class="car-type-checkbox form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500">
+        <span class="ml-2 car-count-span" data-car-type="MPV">MPV (0)</span>
+    </label>
+    <label class="flex items-center text-gray-700">
+        <input type="checkbox" value="Sedan" class="car-type-checkbox form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500">
+        <span class="ml-2 car-count-span" data-car-type="Sedan">Sedan (0)</span>
+    </label>
+    <label class="flex items-center text-gray-700">
+        <input type="checkbox" value="Coupe" class="car-type-checkbox form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500">
+        <span class="ml-2 car-count-span" data-car-type="Coupe">Coupe (0)</span>
+    </label>
+    <label class="flex items-center text-gray-700">
+        <input type="checkbox" value="Hatchback" class="car-type-checkbox form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500">
+        <span class="ml-2 car-count-span" data-car-type="Hatchback">Hatchback (0)</span>
+    </label>
+                </div>
+            </div>
+
+            <!-- Capacity Filter -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-gray-400 uppercase mb-4">Capacity</h3>
+                    <div class="space-y-3" id="capacity-filters">
+                    <label class="flex items-center text-gray-700">
+                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500" checked>
+                        <span class="ml-2">2 Person (10)</span>
+                    </label>
+                    <label class="flex items-center text-gray-700">
+                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2">4 Person (14)</span>
+                    </label>
+                    <label class="flex items-center text-gray-700">
+                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2">6 Person (12)</span>
+                    </label>
+                    <label class="flex items-center text-gray-700">
+                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 rounded-md border-gray-300 focus:ring-blue-500" checked>
+                        <span class="ml-2">8 or More (16)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-400 uppercase mb-4">Price</h3>
+                <input type="range" min="0" max="100" value="100" class="w-full h-1 bg-blue-200 rounded-lg appearance-none cursor-pointer">
+                <p class="text-gray-700 mt-2">Max: $100.00</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow p-4 sm:p-6 lg:p-8 ">
+            <!-- Pick-up and Drop-off Section -->
+            <div class="max-w-7xl mx-auto bg-white rounded-xl shadow-md p-6 md:flex md:justify-between md:items-center space-y-6 md:space-y-0 md:space-x-6 mb-8">
+
+                <!-- Pick-Up Section -->
+                <div class="space-y-3 w-full">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" class="w-4 h-4 text-blue-500 border-gray-300 rounded" checked>
+                        <span class="font-semibold text-gray-700">Pick - Up</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600">Locations</label>
+                            <select class="w-full mt-1 border rounded-md px-3 py-2 text-sm text-gray-500 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Select your city</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600">Date</label>
+                            <input type="date" class="w-full mt-1 border rounded-md px-3 py-2 text-sm text-gray-500 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600">Time</label>
+                            <select class="w-full mt-1 border rounded-md px-3 py-2 text-sm text-gray-500 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Select your time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swap Button -->
+                <div class="flex justify-center items-center flex-shrink-0">
+                    <button class="w-12 h-12 rounded-xl bg-blue-600 text-white text-xl hover:bg-blue-700 transition shadow-lg flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h18m-13.5-9L21 7.5m0 0L16.5 12M21 7.5H3" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Drop-Off Section -->
+                <div class="space-y-3 w-full">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" class="w-4 h-4 text-blue-500 border-gray-300 rounded" checked>
+                        <span class="font-semibold text-gray-700">Drop - Off</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600">Locations</label>
+                            <select class="w-full mt-1 border rounded-md px-3 py-2 text-sm text-gray-500 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Select your city</option>
+                                 <option>Nigeria</option>
+                                <option>Ghana</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600">Date</label>
+                            <input type="date" class="w-full mt-1 border rounded-md px-3 py-2 text-sm text-gray-500 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600">Time</label>
+                            <select class="w-full mt-1 border rounded-md px-3 py-2 text-sm text-gray-500 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Select your time</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Listing Section -->
+            <div  id="car-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div class="car-card" data-type="Sport">
+                    <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out">
+                    <div>
+                        <div class="flex justify-between items-center mb-12">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">Koenigsegg</h3>
+                                <p class="text-gray-500 text-sm">Sport</p>
+                            </div>
+                            <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/image 7.png" alt="Koenigsegg" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                90L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Manual
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                2 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">$99.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                        </div>
+                        <button class="rent-now-btn bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                        <!-- <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button> -->
+                    </div>
+                </div>
+                
+</div>
+                <!-- Car Card 2: Nissan GT-R -->
+                 <div class="car-card" data-type="Sport">
+                <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out" >
+                    <div>
+                        <div class="flex justify-between items-center mb-12">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">Nissan GT - R</h3>
+                                <p class="text-gray-500 text-sm">Sport</p>
+                            </div>
+                            <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/image 8.png" alt="Nissan GT-R" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                80L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Manual
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                2 People
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">$80.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                            <p class="text-gray-400 text-sm line-through">$100.00</p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Car Card 3: Rolls - Royce -->
+                 <div class="car-card" data-type="MPV">
+                <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out">
+                    <div>
+                        <div class="flex justify-between items-center mb-12">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">Rolls - Royce</h3>
+                                <p class="text-gray-500 text-sm">MPV</p>
+                            </div>
+                            <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/Car.png" alt="Rolls-Royce" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                70L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Manual
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                4 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">$96.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+</div>
+
+                <!-- Car Card 4: All New Rush -->
+                 <div class="car-card" data-type="SUV">
+               <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out ">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">All New Rush</h3>
+                                <p class="text-gray-500 text-sm">SUV</p>
+                            </div>
+                           <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/Car (2).png" alt="Koenigsegg" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                90L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Manual
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                2 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                       <div>
+                            <p class="text-2xl font-bold text-gray-800">$72.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                            <p class="text-gray-400 text-sm line-through">$80.00</p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Car Card 2: Nissan GT-R -->
+                 <div class="car-card" data-type="Sedan">
+                <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out ">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">CR-V</h3>
+                                <p class="text-gray-500 text-sm">Sedan</p>
+                            </div>
+                             <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/Car (1).png" alt="Nissan GT-R" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                80L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Manual
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                2 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">$80.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Car Card 3: Rolls - Royce -->
+                 <div class="car-card" data-type="Coupe">
+                <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out ">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">All New Terious</h3>
+                                <p class="text-gray-500 text-sm">Coupe</p>
+                            </div>
+                          <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/Car (2).png" alt="Rolls-Royce" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                70L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Manual
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                4 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">$74.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+</div>
+                <!-- second man -->
+
+                <div class="car-card" data-type="Hatchback">
+                <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out ">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">MG ZX Exclusice</h3>
+                                <p class="text-gray-500 text-sm">Hatchback</p>
+                            </div>
+                           <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/1Car.png" alt="Koenigsegg" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                70L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Electric
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                4 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                       <div>
+                            <p class="text-2xl font-bold text-gray-800">$76.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                            <p class="text-gray-400 text-sm line-through">$80.00</p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+</div>
+
+                <!-- Car Card 2: Nissan GT-R -->
+                 <div class="car-card" data-type="SUV">
+                <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out ">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">New MG ZS</h3>
+                                <p class="text-gray-500 text-sm">SUV</p>
+                            </div>
+                            <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/2Car.png" alt="Nissan GT-R" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                80L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Manual
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                6 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">$80.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+</div>
+
+                <!-- Car Card 3: Rolls - Royce -->
+                 <div class="car-card" data-type="Hatchback">
+                <div class="bg-white p-6 flex flex-col justify-between rounded-2xl shadow-md transition-transform duration-200 ease-in-out ">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900">MG ZX Excite</h3>
+                                <p class="text-gray-500 text-sm">Hatchback</p>
+                            </div>
+                           <svg class="w-6 h-6 text-gray-400 cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onclick="toggleHeart(this)">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-10">
+                            <img src="images/1Car.png" alt="Rolls-Royce" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25m0 4.5h-1.125m-4.125-8.25h2.25c.621 0 1.125-.504 1.125-1.125V7.5M8.25 18.75V10.5M12 18.75V10.5M15.75 18.75V10.5M15.75 10.5a3 3 0 0 1-3 3H9.75a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h2.25c.621 0 1.125.504 1.125 1.125V6.75m0 0H5.625" />
+                                </svg>
+                                90L
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                Electric
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-600 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                4 People
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">$74.00/<span class="text-sm font-normal text-gray-500">day</span></p>
+                        </div>
+                        <button class="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition-colors duration-200">Rent Now</button>
+                    </div>
+                </div>
+                </div>
+ </div>
+ </div>
+    </main>
+    </div>
+
+    <section class="font-inter bg-gray-50 flex items-center justify-center py-4">
+    <div class="grid grid-cols-3 items-center w-full max-w-4xl">
+    
+        <div></div>
+
+        <!-- Centered button in middle column -->
+        <div class="flex justify-center ">
+            <button class="bg-blue-600 text-white rounded-xl px-7 py-3 font-semibold shadow-md hover:bg-blue-700 transition-colors duration-200">
+                Show more car
+            </button>
+        </div>
+
+        <!-- Text aligned to end in right column -->
+       <div class="flex justify-end items-end mb-4 max-w-7xl mx-auto ">
+  <p class="text-gray-500 text-lg">120 Car</p>
+</div>
+
+    </div>
+</section>
+
+<footer class="bg-white py-12 px-4 sm:px-8 lg:px-16 pt-10">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-stretch gap-8">
+            <!-- Left Section: MORENT Logo and Description -->
+            <div class="w-full lg:w-1/2 flex flex-col">
+                <h1 class="text-3xl font-bold text-blue-700 mb-4">TEE-AUTO</h1>
+                <p class="text-gray-600 text-sm leading-relaxed max-w-sm">
+                    Our vision is to provide convenience and help increase your sales business.
+                </p>
+            </div>
+  
+            <!-- Right Section: Navigation Links -->
+            <div class="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-8 ">
+                <!-- About Column -->
+                <div class="text-right sm:text-left">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">About</h4>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">How it works</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Featured</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Partnership</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Bussiness Relation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Community Column -->
+                <div class="text-right sm:text-left">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">Community</h4>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Events</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Podcast</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Invite a friend</a></li>
+                    </ul>
+                </div>
+
+                <!-- Socials Column -->
+                <div class="text-right sm:text-left">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">Socials</h4>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Discord</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Instagram</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Twitter</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright and Policy Links -->
+        <div class="max-w-7xl mx-auto border-t border-gray-300 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-black text-sm font-semibold ">
+            <p>&copy;2022 MORENT. All rights reserved</p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-42 sm:mt-0 text-black">
+                <a href="#" >Privacy & Policy</a>
+                <a href="#" >Terms & Condition</a>
+            </div>
+        </div>
+    </footer>
+  </section>
+
+   <script>
+        function toggleHeart(element) {
+            // Check if the element currently has the 'text-red-500' class
+            if (element.classList.contains('text-red-500')) {
+                // If it does, remove 'text-red-500' and add 'text-gray-400'
+                element.classList.remove('text-red-500');
+                element.classList.add('text-gray-400');
+            } else {
+                // If it doesn't, remove 'text-gray-400' and add 'text-red-500'
+                element.classList.remove('text-gray-400');
+                element.classList.add('text-red-500');
+            }
+        }
+
+        // Optional: Update price range display
+        const priceRangeInput = document.querySelector('input[type="range"]');
+        const maxPriceValueSpan = document.getElementById('maxPriceValue');
+
+        if (priceRangeInput && maxPriceValueSpan) {
+            priceRangeInput.addEventListener('input', function() {
+                maxPriceValueSpan.textContent = `$${this.value}.00`;
+            });
+        }
+
+  </script>
+
+<script>
+// This script is already perfect for your stated goal
+document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll('.car-type-checkbox');
+    const carCards = document.querySelectorAll('.car-card');
+    const carCountSpans = document.querySelectorAll('.car-count-span');
+
+    function updateCarCounts() {
+        const counts = {};
+        carCards.forEach(card => {
+            const type = card.getAttribute('data-type');
+            counts[type] = (counts[type] || 0) + 1;
+        });
+
+        carCountSpans.forEach(span => {
+            const type = span.getAttribute('data-car-type');
+            const currentText = span.textContent.split('(')[0].trim();
+            span.textContent = `${currentText} (${counts[type] || 0})`;
+        });
+    }
+
+    function filterCars() {
+        // This array will be empty on refresh IF no checkboxes have 'checked' in HTML
+        const selectedTypes = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
+
+        carCards.forEach(card => {
+            const type = card.getAttribute('data-type');
+            // If selectedTypes is empty, selectedTypes.length === 0 is true,
+            // and all cards will display 'block'.
+            // Otherwise, it filters based on what's checked.
+            if (selectedTypes.length === 0 || selectedTypes.includes(type)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', filterCars);
+    });
+
+    // Initial updates on page load
+    updateCarCounts(); // Call this first to get initial counts
+    filterCars(); // This call will show all cars IF no checkboxes are checked in HTML
+});
+
+// Function to toggle heart icon color (remains the same)
+function toggleHeart(element) {
+    if (element.classList.contains('text-red-500')) {
+        element.classList.remove('text-red-500');
+        element.classList.add('text-gray-400');
+    } else {
+        element.classList.remove('text-gray-400');
+        element.classList.add('text-red-500');
+    }
+}
+</script>
+
+
+
+
+
+</body>
+</html>

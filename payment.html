@@ -1,0 +1,528 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morent Category</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="flex justify-between items-center px-6 py-4 shadow-sm bg-white">
+    
+    
+    <div class="text-2xl font-bold text-blue-600">MORENT</div>
+
+    <!-- Search Bar -->
+    <div class="flex items-center bg-gray-100 px-4 py-2 rounded-full w-full max-w-md mx-6">
+      <i class="fas fa-search text-gray-400 mr-2"></i>
+      <input
+        type="text"
+        placeholder="Search something here"
+        class="flex-grow bg-transparent focus:outline-none text-sm text-gray-700"
+      />
+      <i class="fas fa-sliders-h text-gray-400 ml-2"></i>
+    </div>
+
+    <!-- Icons -->
+    <div class="flex items-center space-x-4">
+      <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <i class="fas fa-heart text-gray-600"></i>
+      </div>
+
+      <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer relative">
+        <i class="fas fa-bell text-gray-600"></i>
+        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+      </div>
+
+      <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <i class="fas fa-gear text-gray-600"></i>
+      </div>
+      <img
+        src="images/Image.png"
+        alt="User"
+        class="w-10 h-10 rounded-full object-cover"
+      />
+    </div>
+  </header>
+
+  <section class="p-4 md:p-8 lg:p-12 bg-gray-100">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Left Column: Billing Info and Rental Info -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Billing Info Section -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-blue-100">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">Billing Info</h2>
+                        <p class="text-sm  font-semibold text-gray-400">Please enter your billing info</p>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-400">Step 1 of 4</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                    <!-- Name Input -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input type="text" id="name" placeholder="Your name"
+                               class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm bg-gray-200">
+                    </div>
+                    <!-- Phone Number Input -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Phone number"
+                               class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm bg-gray-200">
+                    </div>
+                    <!-- Address Input -->
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                        <input type="text" id="address" placeholder="Address"
+                               class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm bg-gray-200">
+                    </div>
+                    <!-- Town / City Input -->
+                    <div>
+                        <label for="city" class="block text-sm font-medium text-gray-700 mb-2">Town / City</label>
+                        <input type="text" id="city" placeholder="Town or city"
+                               class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm bg-gray-200">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rental Info Section -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-blue-100">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">Rental Info</h2>
+                        <p class="text-sm font-semibold text-gray-400">Please select your rental date</p>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-400">Step 2 of 4</span>
+                </div>
+
+                <div class="mb-6">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="rental_type" value="pick_up" checked
+                               class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2 text-sm font-medium text-gray-700">Pick - Up</span>
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                    <!-- Locations Dropdown -->
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700 mb-2">Locations</label>
+                        <div class="relative">
+                            <select id="location" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 text-sm select-arrow bg-gray-200">
+                                <option value="">Select your city</option>
+                                <option value="new_york">New York</option>
+                                <option value="los_angeles">Los Angeles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Date Dropdown -->
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                        <div class="relative">
+                            <select id="date" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 text-sm select-arrow bg-gray-200">
+                                <option value="">Select your date</option>
+                                <option value="2024-07-15">July 15, 2024</option>
+                                <option value="2024-07-16">July 16, 2024</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Time Dropdown -->
+                    <div>
+                        <label for="time" class="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                        <div class="relative">
+                            <select id="time" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 text-sm select-arrow bg-gray-200">
+                                <option value="">Select your time</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="14:00">02:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-blue-100"> -->
+                <!-- <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">Rental Info</h2>
+                        <p class="text-sm font-semibold text-gray-400">Please select your rental date</p>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-400">Step 2 of 4</span>
+                </div> -->
+
+                <div class="mb-6 mt-5">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="rental_type" value="pick_up" checked
+                               class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2 text-sm font-medium text-gray-700">Drop- off</span>
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                    <!-- Locations Dropdown -->
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700 mb-2">Locations</label>
+                        <div class="relative">
+                            <select id="location" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 text-sm select-arrow bg-gray-200">
+                                <option value="">Select your city</option>
+                                <option value="new_york">New York</option>
+                                <option value="los_angeles">Los Angeles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Date Dropdown -->
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                        <div class="relative">
+                            <select id="date" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 text-sm select-arrow bg-gray-200">
+                                <option value="">Select your date</option>
+                                <option value="2024-07-15">July 15, 2024</option>
+                                <option value="2024-07-16">July 16, 2024</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Time Dropdown -->
+                    <div>
+                        <label for="time" class="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                        <div class="relative">
+                            <select id="time" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 text-sm select-arrow bg-gray-200">
+                                <option value="">Select your time</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="14:00">02:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+ <!-- payment_method -->
+
+
+             <div class="bg-white p-6 rounded-xl shadow-sm border border-blue-100 ">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">Payment Method</h2>
+                        <p class="text-sm  font-semibold text-gray-500">Please enter your payment method</p>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-400">Step 3 of 4</span>
+                </div>
+
+                <!-- Credit Card Option -->
+                <div class="bg-blue-50 bg-opacity-50 p-4 rounded-xl border border-blue-200 mb-4">
+                    <label class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" name="payment_method" value="credit_card" checked
+                                   class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <span class="ml-2 text-sm font-medium text-gray-700">Credit Card</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+    <i class="fa-brands fa-cc-visa fa-2x"></i>
+    <i class="fa-brands fa-cc-mastercard fa-2x"></i>
+</div>
+                    </label>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mt-4">
+                        <!-- Card Number Input -->
+                        <div>
+                            <label for="card_number" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                            <input type="text" id="card_number" placeholder="Card number"
+                                   class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm">
+                        </div>
+                        <!-- Expiration Date Input -->
+                        <div>
+                            <label for="expiration_date" class="block text-sm font-medium text-gray-700 mb-2">Expiration Date</label>
+                            <input type="text" id="expiration_date" placeholder="DD / MM / YY"
+                                   class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm">
+                        </div>
+                        <!-- Card Holder Input -->
+                        <div>
+                            <label for="card_holder" class="block text-sm font-medium text-gray-700 mb-2">Card Holder</label>
+                            <input type="text" id="card_holder" placeholder="Card holder"
+                                   class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm">
+                        </div>
+                        <!-- CVC Input -->
+                        <div>
+                            <label for="cvc" class="block text-sm font-medium text-gray-700 mb-2">CVC</label>
+                            <input type="text" id="cvc" placeholder="CVC"
+                                   class="w-full p-3 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PayPal Option -->
+                <div class="bg-white p-4 rounded-xl border border-gray-200 mb-4">
+                    <label class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="radio" name="payment_method" value="paypal"
+                                   class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <span class="ml-2 text-sm font-medium text-gray-700">PayPal</span>
+                        </div>
+                        <i class="fa-brands fa-paypal"  ></i>
+                    </label>
+                </div>
+
+                <!-- Bitcoin Option -->
+                <div class="bg-white p-4 rounded-xl border border-gray-200">
+                    <label class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="radio" name="payment_method" value="bitcoin"
+                                   class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <span class="ml-2 text-sm font-medium text-gray-700">Bitcoin</span>
+                        </div>
+                        <i class="fa-brands fa-bitcoin"></i>
+                    </label>
+                </div>
+                
+            </div>
+
+<div class="bg-white p-6 rounded-xl shadow-sm border border-blue-100 ">
+        <!-- Header Section -->
+        <div class="flex justify-between items-baseline mb-6">
+            <div>
+                <h1 class="text-2xl font-semibold text-gray-800 mb-1">Confirmation</h1>
+                <p class="text-gray-600 font-semibold text-sm">We are getting to the end. Just few clicks and your rental is ready!</p>
+            </div>
+            <span class="text-gray-400 font-semibold text-sm">Step 4 of 4</span>
+        </div>
+
+        <!-- Checkbox 1 -->
+        <div class="bg-blue-50 p-4 rounded-lg flex items-center mb-4 border border-blue-100">
+            <input type="checkbox" id="marketing-email" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+            <label for="marketing-email" class="ml-3 text-gray-500 text-base font-semibold">I agree with sending an Marketing and newsletter emails. No spam, promised!</label>
+        </div>
+
+        <!-- Checkbox 2 -->
+        <div class="bg-blue-50 p-4 rounded-lg flex items-center mb-6 border border-blue-100">
+            <input type="checkbox" id="terms-conditions" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+            <label for="terms-conditions" class="ml-3 text-gray-500 text-base font-semibold">I agree with our terms and conditions and privacy policy.</label>
+        </div>
+
+        <!-- Rent Now Button -->
+        <button class="w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition duration-150 ease-in-out">
+            Rent Now
+        </button>
+
+        <!-- Security Message -->
+        <div class="mt-8 flex items-start">
+            <!-- SVG for shield icon -->
+            <svg class="w-6 h-6 text-blue-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944c-2.972 0-5.792 1.188-7.936 3.332C1.944 8.416.756 11.236.756 14.208c0 3.193 1.282 6.096 3.488 8.192L12 22.955l7.756-7.756c2.206-2.096 3.488-4.999 3.488-8.192 0-2.972-1.188-5.792-3.332-7.936z"></path>
+            </svg>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900">All your data are safe</h3>
+                <p class="text-gray-500 text-sm mt-1 font-semibold">We are using the most advanced security to provide you the best experience ever.</p>
+            </div>
+        </div>
+    </div>
+            
+
+        </div>
+
+        <!-- Right Column: Rental Summary -->
+        <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-blue-100 h-fit">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Rental Summary</h2>
+            <p class="text-sm text-gray-500 font-semibold mb-6">Prices may change depending on the length of the rental and the price of your rental car.</p>
+
+            <!-- Car Details -->
+            <div class="flex items-center mb-6">
+                <div class="w-24 h-24 bg-blue-400 rounded-xl flex items-center justify-center p-2 mr-4">
+                    <!-- Placeholder for car image -->
+                    <img src="images/image 8.png" alt="Nissan GT-R" class="max-w-full max-h-full object-contain rounded-lg">
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Nissan GT - R</h3>
+                    <div id="star-rating-container" class="flex items-center text-sm">
+            <!-- Star icons -->
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <div class="flex items-center text-gray-600 text-sm">
+            <span id="current-rating-text" class="font-medium">0.0 Stars</span>
+            <!-- <span class="ml-2 text-gray-500 text-xs"> (<span id="review-count">440</span>+ Reviews)</span> -->
+        </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200 my-6">
+
+            <!-- Subtotal and Tax -->
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-600 text-sm font-semibold">Subtotal</span>
+                <span class="font-medium text-gray-800 ">$80.00</span>
+            </div>
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-gray-600 text-sm font-semibold">Tax</span>
+                <span class="font-medium text-gray-800">$0</span>
+            </div>
+
+            <!-- Promo Code Input -->
+            <div class="flex mb-6">
+                <input type="text" placeholder="Apply promo-code"
+                       class="flex-grow p-3 border border-gray-200 rounded-l-lg focus:ring-blue-500 focus:border-blue-500 text-gray-700 placeholder-gray-400 text-sm">
+                <button class="bg-blue-600 text-white px-5 py-3 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm font-medium">Apply now</button>
+            </div>
+
+            <!-- Total Rental Price -->
+            <div class="flex justify-between items-center">
+                <div>
+                    <p class="text-gray-600 text-sm font-semibold">Total Rental Price</p>
+                    <p class="text-xs text-gray-500 font-semibold">Overall price and includes rental discount</p>
+                </div>
+                <span class="text-2xl font-bold text-gray-800">$80.00</span>
+            </div>
+  
+        </div>
+    </div>    
+        </div>
+
+            <!-- </div> -->
+
+            
+</section>
+        <!-- </div> -->
+
+
+        
+
+        
+
+<footer class="bg-white py-12 px-4 sm:px-8 lg:px-16 pt-10">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-stretch gap-8">
+            <!-- Left Section: MORENT Logo and Description -->
+            <div class="w-full lg:w-1/2 flex flex-col">
+                <h1 class="text-3xl font-bold text-blue-700 mb-4">TEE-AUTO</h1>
+                <p class="text-gray-600 text-sm leading-relaxed max-w-sm">
+                    Our vision is to provide convenience and help increase your sales business.
+                </p>
+            </div>
+  
+            <!-- Right Section: Navigation Links -->
+            <div class="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-8 ">
+                <!-- About Column -->
+                <div class="text-right sm:text-left">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">About</h4>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">How it works</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Featured</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Partnership</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Bussiness Relation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Community Column -->
+                <div class="text-right sm:text-left">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">Community</h4>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Events</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Podcast</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Invite a friend</a></li>
+                    </ul>
+                </div>
+
+                <!-- Socials Column -->
+                <div class="text-right sm:text-left">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">Socials</h4>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Discord</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Instagram</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Twitter</a></li>
+                        <li><a href="#" class="hover:text-blue-700 transition-colors duration-200">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Copyright and Policy Links -->
+        <div class="max-w-7xl mx-auto border-t border-gray-300 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-black text-sm font-semibold ">
+            <p>&copy;2022 MORENT. All rights reserved</p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-42 sm:mt-0 text-black">
+                <a href="#" >Privacy & Policy</a>
+                <a href="#" >Terms & Condition</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to the star elements and text displays
+            const starsContainer = document.getElementById('star-rating-container');
+            const stars = starsContainer.querySelectorAll('.star');
+            const currentRatingText = document.getElementById('current-rating-text');
+            const reviewCountSpan = document.getElementById('review-count');
+
+            // Initial rating set to 0, meaning no stars are filled initially.
+            let currentRating = 0;
+            let reviewCount = 440; // Initial review count
+
+            /**
+             * Updates the visual display of the stars based on a given rating.
+             * @param {number} rating - The number of stars to fill.
+             * @param {boolean} isHover - True if the update is due to a hover event, false otherwise.
+             */
+            function updateStarDisplay(rating, isHover = false) {
+                stars.forEach((star, index) => {
+                    // Check if the current star's index is less than the rating value
+                    if (index < rating) {
+                        star.classList.remove('empty');
+                        star.classList.add('filled');
+                        // Apply hovered class if it's a hover event
+                        if (isHover) {
+                            star.classList.add('hovered');
+                        } else {
+                            star.classList.remove('hovered');
+                        }
+                    } else {
+                        star.classList.remove('filled', 'hovered');
+                        star.classList.add('empty');
+                    }
+                });
+                // Update the text display for the current rating
+                currentRatingText.textContent = `${rating}.0 Stars`;
+            }
+
+            // Initialize the star display with the current rating (which is 0)
+            updateStarDisplay(currentRating);
+
+            // Add event listeners to each star
+            stars.forEach(star => {
+                const value = parseInt(star.dataset.value); // Get the star's data-value
+
+                // Mouseover event: Highlight stars up to the hovered star
+                star.addEventListener('mouseover', () => {
+                    updateStarDisplay(value, true); // Pass true for isHover
+                });
+
+                // Mouseout event: Revert to the actual current rating
+                star.addEventListener('mouseout', () => {
+                    updateStarDisplay(currentRating); // Revert to the stored rating
+                });
+
+                // Click event: Set the new rating
+                star.addEventListener('click', () => {
+                    // Update the current rating
+                    currentRating = value;
+                    // Update the review count (example: increment by 1 for a new review)
+                    // This logic assumes a new review is added each time a user clicks,
+                    // even if they change their mind. You might want more complex logic
+                    // to only increment for the *first* rating from a user.
+                    reviewCount++;
+                    reviewCountSpan.textContent = reviewCount;
+                    // Update the star display based on the new current rating
+                    updateStarDisplay(currentRating);
+                    // In a real application, you would typically send this 'currentRating'
+                    // and potentially 'reviewCount' update to a backend server here.
+                    console.log(`User rated: ${currentRating} stars. Total reviews: ${reviewCount}`);
+                    // You could also show a temporary "Thank you for your rating!" message here.
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
