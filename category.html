@@ -725,11 +725,15 @@
   </script>
 
 <script>
-// This script is already perfect for your stated goal
 document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = document.querySelectorAll('.car-type-checkbox');
     const carCards = document.querySelectorAll('.car-card');
     const carCountSpans = document.querySelectorAll('.car-count-span');
+
+    // ✅ Clear checkbox state on page load
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
 
     function updateCarCounts() {
         const counts = {};
@@ -746,16 +750,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function filterCars() {
-        // This array will be empty on refresh IF no checkboxes have 'checked' in HTML
         const selectedTypes = Array.from(checkboxes)
             .filter(checkbox => checkbox.checked)
             .map(checkbox => checkbox.value);
 
         carCards.forEach(card => {
             const type = card.getAttribute('data-type');
-            // If selectedTypes is empty, selectedTypes.length === 0 is true,
-            // and all cards will display 'block'.
-            // Otherwise, it filters based on what's checked.
             if (selectedTypes.length === 0 || selectedTypes.includes(type)) {
                 card.style.display = 'block';
             } else {
@@ -768,12 +768,11 @@ document.addEventListener("DOMContentLoaded", function () {
         checkbox.addEventListener('change', filterCars);
     });
 
-    // Initial updates on page load
-    updateCarCounts(); // Call this first to get initial counts
-    filterCars(); // This call will show all cars IF no checkboxes are checked in HTML
+    updateCarCounts();
+    filterCars();
 });
 
-// Function to toggle heart icon color (remains the same)
+// Function to toggle heart icon color
 function toggleHeart(element) {
     if (element.classList.contains('text-red-500')) {
         element.classList.remove('text-red-500');
@@ -784,8 +783,6 @@ function toggleHeart(element) {
     }
 }
 </script>
-
-
 
 
 
